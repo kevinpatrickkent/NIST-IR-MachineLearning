@@ -1,5 +1,14 @@
 # NIST-IR-MachineLearning
 
+The aim of this project is to enable utilization of the wealth of FTIR spectra available in databases for the prediction of chemical unknown structures from FTIR spectra.  Two common approaches to this problem are to:
+
+    1) Directly match the unknown spectra with known spectra
+    2) Identify functional groups from peaks within the FTIR spectrum to hint at the full structure.
+    
+The general approach taken in this project will be to use known FTIR spectra to predict bits in chemical fingerprints (MACCS keys and PubChem fingerprints).  There are various types of chemical fingerprints, and they are generally methods to convert chemical structure into digital bits for chemical database searching problems (identifying similar and distinct chemicals).  In some of the fingerprints each individual bit in the fingerprint is 1 or 0 depending on whether or not a molecule has a particular molecular fragment or atom.
+
+Prediction of the fingerprint bits from the FTIR spectra allows combination of the two strategies above.  By taking the predicted fingerprint and comparing to a database of fingerprints (even if you don't have the FTIR spectrum) it's possible to identify potential matches to the predicted fingerprint.  Additionally, based information about which bits were predicted from the spectrum would give clues as to which functional groups are present in the unknown molecule.
+
 The aim of this notebook is to determine if using FTIR spectral data to predict the presence or absence of MACCS key fingerprint bits is possible and useful. Prior work has shown some success with using machine learning to predict the presence or absence of functional groups (1,2). In this work, prediction of the bits from MACCS keys was chosen in order to see if alternate functional groups represented by the bits would be more amenable to FTIR prediction. Additionally, if successful, detection of a molecular fingerprint would allow for searching of larger chemical databases for matches outside the library by generating MACCS keys fingerprints for the library and then searching for the fingerprint of the unknown against the library of fingerprints.
 
 A) Scrape the FTIR data and molecular information for all molecules in the NIST database
